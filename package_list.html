@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widtr=device-widtr, initial-scale=1.0">
+    <link href="assets/css/robocom.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="assets/js/robocom.js"></script>
+    <title>行李清單</title>
+</head>
+<body>
+    <nav class="title">
+        <div>行李清單</div>
+    </nav>
+    <main>
+        <div class="top_information">
+            工作人員：ＸＸＸ
+        </div>
+        <form class="package_list" action="choose.html" method="post">
+            <table>
+                <!-- 一樣行李 -->
+                <tr>
+                    <td>
+                        Package1 ID
+                    </td>
+                    <td>
+                        Conveyor : 
+                    </td>
+                    <td>
+                        Record Time:
+                    </td>
+                    <td>
+                        <a class="list_delete">
+                            <img src="assets/img/X.png" height="35" width="35">
+                        </a>
+                    </td>
+                </tr>
+                <!-- 一樣行李 -->
+                <tr>
+                    <td>
+                        Package1 ID
+                    </td>
+                    <td>
+                        Conveyor : 
+                    </td>
+                    <td>
+                        Record Time:
+                    </td>
+
+                    <td>
+                        <a class="list_delete">
+                            <img src="assets/img/X.png" height="35" width="35">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <div class="form_buttons">
+                <input type="submit" value="確定無誤，選擇輸送位置" class="submit">
+            </div>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,218 @@
+:root {
+    --font-color: white;
+    --background-color: #5D838C;
+}
+
+body {
+    margin: 0px;
+}
+
+.title {
+    background-color: var(--background-color);
+    text-align: center;
+    color: var(--font-color);
+    font-size: 36px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    flex: none;
+    width: 270px;
+    margin: 10px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--font-color);
+    padding: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.top_information {
+    text-align: center;
+    font-size: 28px;
+}
+
+.package_list {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+}
+
+.package_list table {
+    width: 80%;
+    flex: none;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+.package_list tr{
+    font-size: 20px;
+    line-height: 16px;
+    border-bottom: 1px solid gray;
+    vertical-align: top;
+    padding: 10px;
+    align-items: center;
+    vertical-align: middle;
+    height: 35px;
+}
+
+.package_list td{
+    border-left: 1px solid gray;
+}
+
+/* toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: green;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px green;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.form_buttons{
+    width: 100%;
+}
+
+.submit,
+.report{
+    flex: none;
+    width: 270px;
+    margin: 10px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--font-color);
+    padding: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.package_list.report_list{
+    border: 2px solid gray;
+    border-radius: 20px;
+    margin: 0 10%;
+}
+
+.input_area{
+    width: 50%;
+    justify-content: left;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+}
+
+.package_list .input{
+    margin: 5px;
+}
+
+.package_list .input input,
+.package_list .input textarea,
+.package_list .input{
+    width: 100%;
+}
+
+.package_list .input textarea{
+    height: 100px;
+}
+
+.package_list input{
+    font-size: 20px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid gray;
+}
+
+
+.package_list textarea{
+    font-size: 20px;
+    border: 2px solid gray;
+}
+
+.textarea{
+    vertical-align: top;
+}
+
+.list_delete{
+    cursor: pointer;
+}
+
+/* RWD */
+@media (max-width:1200px) {
+    .item {
+        width: 45%;
+    }
+}
+
+@media (max-width:500px) {
+    .item {
+        width: 90%;
+    }
+}

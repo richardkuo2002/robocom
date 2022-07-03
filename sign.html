@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widtr=device-widtr, initial-scale=1.0">
+    <link href="assets/css/robocom.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="assets/js/robocom.js"></script>
+    <title>行李簽收</title>
+</head>
+<body>
+    <nav class="title">
+        <div>行李簽收</div>
+    </nav>
+    <main>
+        <div class="top_information">
+            輸送帶 1&nbsp;&nbsp;簽收人員：ＸＸＸ
+        </div>
+        <form class="package_list" action="package_list.html" method="post">
+            <table>
+                <tr>
+                    <td>
+                        Package1 ID
+                    </td>
+                    <td>
+                        Accept Time:
+                    </td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Package1 ID
+                    </td>
+                    <td>
+                        Accept Time:
+                    </td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <div class="form_buttons">
+                <input type="submit" value="確定無誤" class="submit">
+                <input type="button" value="回報問題" class="report" onclick="window.location='report.html'">
+            </div>
+        </form>
+    </main>
+</body>
+</html>
