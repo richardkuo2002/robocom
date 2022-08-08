@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/site.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../static/sweetalert2.js"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="../static/promise_ployfill.js"></script>
+    <script src="../static/robocom.js"></script>
+    <title>輸送位置</title>
+</head>
+<body>
+    <nav class="title">
+        <div>選擇輸送位置</div>
+    </nav>
+    <main>
+        <div class="area" id="area">
+            
+            <!-- <div class="item" onclick="check('輸送帶 1')">輸送帶 1</div>
+            <div class="item" onclick="check('輸送帶 2')">輸送帶 2</div>
+            <div class="item" onclick="check('輸送帶 2')">輸送帶 3</div>
+            <div class="item" onclick="check('輸送帶 2')">輸送帶 4</div> -->
+        </div>
+        <script>
+            var area = document.getElementById("area");
+            for(var i = 0; i < 4; i++){
+                var number =  (i+1);
+                var content = "<div class='item' onclick='check(" +number+ ")'>輸送帶" + number + "</div>";
+                area.innerHTML += content;
+            }
+            
+        </script>
+    </main>
+</body>
+</html>

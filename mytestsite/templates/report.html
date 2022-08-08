@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widtr=device-widtr, initial-scale=1.0">
+    <link href="../static/site.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../static/sweetalert2.js"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="../static/promise_ployfill.js"></script>
+    <script src="../static/robocom.js"></script>
+    <title>Report</title>
+</head>
+<body>
+    <nav class="title">
+        <div>Report</div>
+    </nav>
+    <main>
+        <div class="top_information">
+            問題回報
+        </div>
+        <form class="package_list report_list" method="get" action="../choose">
+            <div class="input_area">
+                <div class="input">
+                    人員:<br>
+                    <input name="employee" value="XXX">
+                </div>
+                <div class="input">
+                    輸送帶:<br>
+                    <input name="conveyor">
+                </div>
+                <div class="input">
+                    行李編號:<br>
+                    <input name="packageID">
+                </div>
+                <div class="input textarea">
+                    問題回報<br>
+                    <textarea>
+
+                    </textarea>
+                </div>
+            </div>
+            <div class="form_buttons">
+                <input type="submit" value="回報問題" class="submit">
+            </div>
+        </form>
+    </main>
+</body>
+</html>

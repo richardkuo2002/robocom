@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/site.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../static/sweetalert2.js"></script>
+    <!-- 若需相容 IE11，要加載 Promise Polyfill-->
+    <script src="../static/promise_ployfill.js"></script>
+    <script src="../static/robocom.js"></script>
+    <meta http-equiv="refresh" content="4">
+    <title>前往{{target}}中</title>
+</head>
+<body>
+    <nav class="title">
+        <div>前往 {{target}} 中</div>
+    </nav>
+    <main>
+        <div class="area" id="area">
+            <h1 class="MoveText">
+                Moving To {{target}} 
+                <span class="dot"></span>
+            </h1>
+            <div class="item" onclick="report()">問題回報</div>
+        </div>
+        
+    </main>
+</body>
+</html>
