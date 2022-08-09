@@ -16,6 +16,7 @@ body {
     margin-bottom: 10px;
 }
 
+
 .area {
     display: flex;
     flex-wrap: wrap;
@@ -207,7 +208,7 @@ input:checked+.slider:before {
 .MoveText {
     flex: none;
     display: block;
-    width: 55%;
+    width: 100%;
     text-align: center;
 }
 
