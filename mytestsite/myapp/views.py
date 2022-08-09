@@ -29,7 +29,11 @@ def move(request, target):
     #                 CrossIntersection = True
     #                 func.MoveTo(target)
     #                 break
-
+    # 
+    # (\_/)   (\_/)
+    # (._.)   (._.)
+    # />??>   <??<\
+    
     if AGVStatus == "standby":
         func.MoveTo(target)
         print(target)
