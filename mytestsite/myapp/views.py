@@ -67,6 +67,7 @@ def moveback(request):
     #                 break
     if AGVStatus == "standby":
         if AGVPower < 20:
+            MainTarget = "dock"
             target = "dock"
             func.MoveTo(target)
         else:
