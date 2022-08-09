@@ -133,4 +133,4 @@ def OpticalFlow(url, sec):
 # "/Users/richard/Downloads/crossroad.mp4"
 # Optical函示 第一個參數為影片路徑, 若設定為0則為預設鏡頭
 # 第二個參數為設定幾秒觀測一次
-print(OpticalFlow("/Users/richard/Downloads/crossroad.mp4", 2))
+print(OpticalFlow(0, 3))
