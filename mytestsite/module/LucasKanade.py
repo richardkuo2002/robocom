@@ -9,7 +9,6 @@ import time
 
 def OpticalFlow(url, sec):
 
-    
     cap = cv2.VideoCapture(url)
 
     # 設定 ShiTomasi 角點檢測的引數
