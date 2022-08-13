@@ -10,7 +10,7 @@ CrossIntersection = False
 def test(request):
     # output = str(func.GetDock())
     # func.MoveTo(1)
-    # output += str(func.GetAGV()["value"]["agv"][0][6])
+    # print(str(func.GetAGV()["value"]["agv"][0][6]))
     return render(request, "page.html", locals()) 
 
 def move(request, target):

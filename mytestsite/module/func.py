@@ -32,6 +32,19 @@ def GetDock():
         time.sleep(5)
         return "let it sleep."
 
+def GetTarget():
+    data = {
+        "option" : "all"
+    }
+    try:
+        s = solveRequestFull()
+        data = s.post(url = FMSURL + "/get_target", json = data)
+        return data.json()
+    except:
+        print("let it sleep.")
+        time.sleep(5)
+        return None
+
 def GetAGV():
     data = {
         "option" : "all"

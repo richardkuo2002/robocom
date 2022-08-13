@@ -1,13 +1,13 @@
 import math
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import time
 
 
 
 
-def OpticalFlow(url, sec):
+def OpticalFlow(url, sec, min, max) -> bool:
 
     cap = cv2.VideoCapture(url)
 
@@ -41,7 +41,7 @@ def OpticalFlow(url, sec):
 
     time_start = time.time()
     
-    plt.ion()
+    # plt.ion()
 
     while(1):
         cnt+=1
@@ -79,7 +79,7 @@ def OpticalFlow(url, sec):
                     print(dst[i])
                     
                     # 要抓的Range
-                    if 1 < dst[i] and dst[i] < 3:
+                    if min < dst[i] and dst[i] < max:
                         move = 1
                     mask = cv2.line(mask, (int(a),int(b)), (int(c),int(d)), color[i].tolist(), 2)
                     frame = cv2.circle(frame, (int(a),int(b)), 5, color[i].tolist(), -1)
@@ -87,13 +87,13 @@ def OpticalFlow(url, sec):
             img = cv2.add(frame, mask)
 
             # Mac 要註解下面那行
-            # cv2.imshow("frame", img)
+            cv2.imshow("frame", img)
 
             #  Windows 要註解這區域{
-            plt.imshow(img)
-            plt.pause(.01)
-            plt.cla()  # clear axis
-            plt.clf()
+            # plt.imshow(img)
+            # plt.pause(.01)
+            # plt.cla()  # clear axis
+            # plt.clf()
             # }
 
             k = cv2.waitKey(30) & 0xff
@@ -123,8 +123,8 @@ def OpticalFlow(url, sec):
             break
     
     # Window 要註解這一區 {
-    cv2.destroyAllWindows()
-    plt.ioff()
+    # cv2.destroyAllWindows()
+    # plt.ioff()
     # }
     cap.release()
 
@@ -132,4 +132,4 @@ def OpticalFlow(url, sec):
 # "/Users/richard/Downloads/crossroad.mp4"
 # Optical函示 第一個參數為影片路徑, 若設定為0則為預設鏡頭
 # 第二個參數為設定幾秒觀測一次
-print(OpticalFlow(0, 3))
+print(OpticalFlow(0, 10, 1, 3))
