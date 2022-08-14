@@ -1,4 +1,5 @@
 import math
+from operator import truediv
 import cv2
 import numpy as np
 # import matplotlib.pyplot as plt
@@ -7,9 +8,7 @@ import time
 
 
 
-def OpticalFlow(url, sec, min, max) -> bool:
-
-    cap = cv2.VideoCapture(url)
+def OpticalFlow(cap, sec, min, max) -> bool:
 
     # 設定 ShiTomasi 角點檢測的引數
     feature_params = dict( maxCorners=100,
@@ -68,7 +67,8 @@ def OpticalFlow(url, sec, min, max) -> bool:
             for i,(new,old) in enumerate(zip(good_new,good_old)):
                 a,b = new.ravel()
                 c,d = old.ravel()
-                print(i)
+
+                # print(i)
                 # print(i, a, b, c, d)
                 temDst = math.pow(int(math.pow((int(a)-int(c)), 2) + math.pow((int(b)-int(d)), 2)), 0.5)
                 if temDst <= 10:
@@ -76,7 +76,7 @@ def OpticalFlow(url, sec, min, max) -> bool:
                     dst[i] = totalDst[i]/cnt
 
                     # Print每個點的變化率
-                    print(dst[i])
+                    # print(dst[i])
                     
                     # 要抓的Range
                     if min < dst[i] and dst[i] < max:
@@ -86,7 +86,7 @@ def OpticalFlow(url, sec, min, max) -> bool:
 
             img = cv2.add(frame, mask)
 
-            # Mac 要註解下面那行
+            #show 畫面
             cv2.imshow("frame", img)
 
             #  Windows 要註解這區域{
@@ -116,6 +116,7 @@ def OpticalFlow(url, sec, min, max) -> bool:
                     dst = [0]*100
                     cnt = 0
                     move = 0
+                    return False
                 else:
                     return True
             
@@ -126,10 +127,21 @@ def OpticalFlow(url, sec, min, max) -> bool:
     # cv2.destroyAllWindows()
     # plt.ioff()
     # }
-    cap.release()
+
 
 
 # "/Users/richard/Downloads/crossroad.mp4"
 # Optical函示 第一個參數為影片路徑, 若設定為0則為預設鏡頭
 # 第二個參數為設定幾秒觀測一次
-print(OpticalFlow(0, 10, 1, 3))
+def TurnOnCV():
+    cap = cv2.VideoCapture("/Users/richard/Downloads/crossroad.mp4")
+    cap_2 = cv2.VideoCapture("/Users/richard/Downloads/crossroad2.mp4")
+    cap_test = cv2.VideoCapture("/Users/richard/Downloads/airport_test.mp4")
+
+    while True:
+        if OpticalFlow(cap, 2, 2, 4) and OpticalFlow(cap_2, 2, 2, 4):
+            break
+
+    cap.release()
+
+TurnOnCV ()
