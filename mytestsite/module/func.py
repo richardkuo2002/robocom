@@ -126,3 +126,16 @@ def ResumeMission(target):
     }
     data = requests.post(url = FMSURL + "/resume_mission_by_robot", json = Data)
     print(data.json())
+
+def CancelMission(target):
+    Data = {
+        "category":"all",
+        "task_id": -1
+    }
+    data = requests.post(url = FMSURL + "/get_mission", json = Data)
+    Data = {
+        "taskindex": data.json()["value"]["unfinish"][0][0],
+        "userid": 15938,
+    }
+    data = requests.post(url = FMSURL + "/cancel_mission", json = Data)
+    print(data.json())
