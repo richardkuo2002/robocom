@@ -1,12 +1,8 @@
 import math
-from operator import truediv
 import cv2
 import numpy as np
 # import matplotlib.pyplot as plt
 import time
-
-
-
 
 def OpticalFlow(cap, sec, min, max) -> bool:
 
@@ -63,7 +59,7 @@ def OpticalFlow(cap, sec, min, max) -> bool:
             if MinLength < len(good_old):
                 MinLength = len(good_old)
 
-            # 繪製角點的軌跡
+            # 繪製軌跡
             for i,(new,old) in enumerate(zip(good_new,good_old)):
                 a,b = new.ravel()
                 c,d = old.ravel()
@@ -87,7 +83,7 @@ def OpticalFlow(cap, sec, min, max) -> bool:
             img = cv2.add(frame, mask)
 
             #show 畫面
-            cv2.imshow("frame", img)
+            cv2.imshow("Frame", img)
 
             #  Windows 要註解這區域{
             # plt.imshow(img)
@@ -113,6 +109,7 @@ def OpticalFlow(cap, sec, min, max) -> bool:
                     time_start = time_end
                     mask = np.zeros_like(old_frame)
                     totalDst = [0]*100
+                    # print(cnt)
                     dst = [0]*100
                     cnt = 0
                     move = 0
@@ -123,25 +120,33 @@ def OpticalFlow(cap, sec, min, max) -> bool:
         else:
             break
     
-    # Window 要註解這一區 {
     # cv2.destroyAllWindows()
+    # Window 要註解這一區 {
     # plt.ioff()
     # }
+
 
 
 
 # "/Users/richard/Downloads/crossroad.mp4"
 # Optical函示 第一個參數為影片路徑, 若設定為0則為預設鏡頭
 # 第二個參數為設定幾秒觀測一次
-def TurnOnCV():
-    cap = cv2.VideoCapture("/Users/richard/Downloads/crossroad.mp4")
-    cap_2 = cv2.VideoCapture("/Users/richard/Downloads/crossroad2.mp4")
-    cap_test = cv2.VideoCapture("/Users/richard/Downloads/airport_test.mp4")
 
+def TurnOnCV(sec, min, max):
+    cap_0 = cv2.VideoCapture(0)
+    cap_1 = cv2.VideoCapture(1)
+    cap_video = cv2.VideoCapture("/Users/richard/Downloads/crossroad.mp4")
+    cap_video_2 = cv2.VideoCapture("/Users/richard/Downloads/crossroad2.mp4")
+    cap_test = cv2.VideoCapture("/Users/richard/Downloads/video.avi")
+    
     while True:
-        if OpticalFlow(cap, 2, 2, 4) and OpticalFlow(cap_2, 2, 2, 4):
-            break
+        result_1 = OpticalFlow(cap_0, sec, min, max)
+        result_2 = OpticalFlow(cap_video, sec, min, max)
+        result = result_1 and result_2
+        print(result_1, "and", result_2, "=", result)
+        if result:
+            return result
 
     cap.release()
 
-TurnOnCV ()
+# TurnOnCV(1, 2, 4)

@@ -8,9 +8,7 @@ CrossIntersection = False
 
 
 def test(request):
-    # output = str(func.GetDock())
-    # func.MoveTo(1)
-    # print(str(func.GetAGV()["value"]["agv"][0][6]))
+    func.ButtonWait()
     return render(request, "page.html", locals()) 
 
 def move(request, target):
@@ -23,9 +21,11 @@ def move(request, target):
     #     if AGVStatus == "standby":
     #         MoveToIntersection()
     #         return render(request, "move.html", locals())
+    # if AGVStatus == "running":
+    #         return render(request, "move.html", locals())
     #     if AGVStatus == "end":
     #         while(1):
-    #             if LucasKanade.OpticalFlow(0,2):
+    #             if LucasKanade.TurnOnCV(1,2,4):
     #                 CrossIntersection = True
     #                 func.MoveTo(target)
     #                 break
@@ -85,3 +85,6 @@ def moveback(request):
         MainTarget = ""
         return render(request, "return.html", locals())
     return None
+
+
+

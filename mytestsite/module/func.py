@@ -8,10 +8,20 @@ MacAddress = "0C:54:15:A6:55:EA"
 Mac = {"mac": MacAddress}
 URL = "http://" + RobotIP + ":" + RobotPort
 
-FMSIP = "172.20.10.4"
+FMSIP = "192.168.0.100"
 FMSPort = "6600"
 FMSURL = "http://" + FMSIP + ":" + FMSPort
-then = datetime(1970, 1, 1, 0, 0, 0)
+then = datetime(1970, 1, 1, 8, 0, 0)
+RobotName = "msi_yellow"
+BasicData = {
+        "start_time": ((datetime.now()-then).total_seconds()),
+        "using_time": 300,
+        "userid": 15938,
+        "robot_type": 0,
+        "robot_mode": [0,0,0],
+        "robot_name": RobotName,
+        }
+MapName = ""
 
 def solveRequestFull():
     requests.adapters.DEFAULT_RETRIES = 5
@@ -59,19 +69,12 @@ def GetAGV():
 
 def MoveToIntersection():
     timedelta = (datetime.now()-then).total_seconds()
-    data = {
-        "start_time": timedelta,
-        "using_time": 300,
-        "userid": 15938,
-        "robot_type": 0,
-        "robot_mode": [1,1,0],
-        "task_arr": [
+    BasicData["task_arr"] = [
             ["DockTo", ["dock_", "Lab0722@1F"]]
         ]
-    }
     try:
         s = solveRequestFull()
-        data = s.post(url = FMSURL + "/set_mission", json = data)
+        data = s.post(url = FMSURL + "/set_mission", json = BasicData)
         print(data.json())
     except :
         time.sleep(5)
@@ -81,21 +84,45 @@ def MoveTo(target):
     timedelta = (datetime.now()-then).total_seconds()
     print(timedelta)
 
-    data = {
-        "start_time": timedelta,
-        "using_time": 300,
-        "userid": 15938,
-        "robot_type": 0,
-        "robot_mode": [1,1,0],
-        "task_arr": [
-            ["DockTo", ["dock_"+str(target), "Lab0722@1F"]]
+    BasicData["task_arr"] = [
+            ["MoveTo", ["target_" + str(target), "Lab0722@1F"]]
         ]
-    }
     try:
         s = solveRequestFull()
-        data = s.post(url = FMSURL + "/set_mission", json = data)
+        data = s.post(url = FMSURL + "/set_mission", json = BasicData)
         print(data.json())
     except :
         time.sleep(5)
     
+def ButtonWait():
+    timedelta = (datetime.now()-then).total_seconds()
+    print(datetime.now())
+    BasicData["task_arr"] = [
+            ["ButtonWait", 0, 20],
+        ]
+    data = requests.post(url = FMSURL + "/set_mission", json = BasicData)
+    print(data.json())
 
+def FollowPath(target):
+    target = int(target) - 1
+    BasicData["task_arr"] = [
+            ["FollowPath" + str(target), ["rail_No." + str(target), 0, 700, MapName] ]
+        ]
+    data = requests.post(url = FMSURL + "/set_mission", json = BasicData)
+    print(data.json())
+
+def PauseMission(target):
+    Data = {
+        "robot_name": RobotName,
+        "userid": 15938,
+    }
+    data = requests.post(url = FMSURL + "/pause_mission_by_robot", json = Data)
+    print(data.json())
+
+def ResumeMission(target):
+    Data = {
+        "robot_name": RobotName,
+        "userid": 15938,
+    }
+    data = requests.post(url = FMSURL + "/resume_mission_by_robot", json = Data)
+    print(data.json())
